@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Header = (props) => (
+const Header = ({menu: { title, menu }}) => {
+  return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <a className="navbar-brand" href="#">{props.menu.title}</a>
+    <a className="navbar-brand" href="#">{ title }</a>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" />
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
-        {props.menu.menu.map( item => {
+        { menu.map( item => {
           return (
-            <li className="nav-item active" key={item}>
-              <a className="nav-link" href="#">{item}<span className="sr-only">(current)</span></a>
+            <li className="nav-item active" key={ item }>
+              <a className="nav-link" href="#">{ item }<span className="sr-only">(current)</span></a>
             </li>
           )
         })}
@@ -22,5 +23,10 @@ const Header = (props) => (
       </form>
     </div>
   </nav>
-)
+  );
+  
+}
+
+ 
+
 export default Header
