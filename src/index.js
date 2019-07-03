@@ -9,13 +9,16 @@ import Forms from './practice/Forms';
 import NameForm from './practice/NameForm';
 import FormContainer from './practice/FormContainer';
 import LiftStateUp from './practice/LiftStateUp';
+import Composition from './practice/Composition';
+import Mounting from './LifeCircle/Mounting';
 
 
 
 
 
 
-ReactDOM.render(<FormContainer />, document.getElementById('root'));
+
+ReactDOM.render(<Mounting />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

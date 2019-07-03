@@ -4,11 +4,11 @@ import Header from './components/Header';
 import Slider from './components/Slider';
 import Content from './components/content';
 import './App.css';
-import p1 from './components/alaska.jpg';
-import p2 from './components/gdog.jpg';
-import p3 from './components/pull.jpg';
-import p4 from './components/shiba.jpg';
-import p5 from './components/vang.jpg';
+import p1 from './assets/image/alaska.jpg';
+import p2 from './assets/image/gdog.jpg';
+import p3 from './assets/image/pull.jpg';
+import p4 from './assets/image/shiba.jpg';
+import p5 from './assets/image/vang.jpg';
 
 
 const menu = {

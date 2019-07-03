@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import cover1  from './1.jpg';
-import cover2  from './2.jpg';
-import cover3  from './3.jpg';
+import cover1  from '../assets/image/1.jpg';
+import cover2  from '../assets/image/2.jpg';
+import cover3  from '../assets/image/3.jpg';
 
 const Slider = () => (
     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
