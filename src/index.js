@@ -1,14 +1,9 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import LifeCircle from './practice/LifeCircle';
-import PropsDemo from './practice/PropsDemo';
-import Forms from './practice/Forms';
-
-
-
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

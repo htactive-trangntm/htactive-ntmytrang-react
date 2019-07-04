@@ -32,28 +32,6 @@
   }
 }
 
-.coverimage{
-  height: 800px;
-  margin-top: 19px;
-
-}
-
-.row{
-  overflow: hidden;
-  width: 100%;
-}
-
-.column{
-    width: 20%;
-    float: left;
-}
-
-.product {
-  margin-left: 56px;
-  margin-top: 117px;
-}
-
-.imgProduct {
-  width: 286px;
-  height: 180px;
+.completed {
+  text-decoration: line-through;
 }
