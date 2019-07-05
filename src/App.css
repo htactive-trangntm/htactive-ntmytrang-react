@@ -35,3 +35,22 @@
 .completed {
   text-decoration: line-through;
 }
+
+.button-group {
+  margin-left: 900px;
+  margin-top: -36px;
+}
+
+.buttonAdd {
+  margin-top: 31px;
+}
+
+.disableInput {
+  pointer-events: none;
+  border: "none";
+  background: "transparent";
+}
+
+.progress {
+  margin-top: 15px;
+}
