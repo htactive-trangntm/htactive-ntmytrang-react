@@ -4,18 +4,21 @@ class FormAddTask extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      value:'',
       acticeInput: false
     };
   }
 
   onClickAddTask = event => {
     event.preventDefault();
+    console.log(`key là ${this.props.key}`)
     let newTask = this.state.value;
     this.props.addTask(newTask);
     event.target.value = "";
     this.setState({
       acticeInput: !this.state.acticeInput
     })
+    this.refs.form.reset();
   };
 
   handleChange = event => {
@@ -82,6 +85,13 @@ class FormAddTask extends Component {
             onClick={() => this.changeFilter("active")}
           >
             Active Task
+          </button>
+          &nbsp;
+          <button
+            className="btn btn-secondary"
+            onClick={() => this.changeFilter("active")}
+          >
+            Show All Completed Tasks
           </button>
           &nbsp;
           <div className="progress">

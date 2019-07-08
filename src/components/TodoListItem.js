@@ -22,7 +22,7 @@ class TodoListItem extends Component {
 
     return (
       <div className="container">
-        <h2>List of task</h2>
+        <h2>List of tasks</h2>
         <ul>{tasks}</ul>
       </div>
     );

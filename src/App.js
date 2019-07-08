@@ -3,6 +3,7 @@ import "./App.css";
 import TodoListItem from "./components/TodoListItem";
 import FormAddTask from "./components/FormAddTask";
 
+const url = "http://5d19c5cab3b6a100148d22e2.mockapi.io/todolist";
 class App extends Component {
   constructor() {
     super();
@@ -14,7 +15,7 @@ class App extends Component {
 
   //fetch data from API
   async componentDidMount() {
-    await fetch("http://5d19c5cab3b6a100148d22e2.mockapi.io/todolist")
+    await fetch(url)
       .then(res => res.json())
       .then(result => {
         this.setState({
@@ -54,7 +55,7 @@ class App extends Component {
       })
     });
 
-    await fetch(`http://5d19c5cab3b6a100148d22e2.mockapi.io/todolist`, {
+    await fetch(url, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -69,17 +70,14 @@ class App extends Component {
   //Edit task and change data on API
   updateTask = async task => {
     console.log(task);
-    await fetch(
-      `http://5d19c5cab3b6a100148d22e2.mockapi.io/todolist/${task.id}`,
-      {
-        method: "PUT",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(task)
-      }
-    )
+    await fetch(url + `/${task.id}`, {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(task)
+    })
       .then(res => {
         return res;
       })
@@ -95,7 +93,7 @@ class App extends Component {
     this.setState({
       todolists: Object.assign(this.state.todolists, task)
     });
-    await fetch(`http://5d19c5cab3b6a100148d22e2.mockapi.io/todolist/${id}`, {
+    await fetch(url + `/${id}`, {
       method: "PUT",
       mode: "cors",
       headers: {
@@ -114,7 +112,7 @@ class App extends Component {
     this.setState({
       todolists: Object.assign(this.state.todolists, task)
     });
-    await fetch(`http://5d19c5cab3b6a100148d22e2.mockapi.io/todolist/${id}`, {
+    await fetch(url + `/${id}`, {
       method: "DELETE",
       mode: "cors",
       headers: {
@@ -131,9 +129,12 @@ class App extends Component {
   render() {
     let calPercent = 0;
     let completedTask = this.state.todolists.filter(items => items.isComplete);
-    calPercent = Math.round(
-      (completedTask.length / this.state.todolists.length) * 100
-    );
+    if (this.state.todolists) {
+      calPercent = Math.round(
+        (completedTask.length / this.state.todolists.length) * 100
+      );
+    }
+    calPercent = 0;
 
     console.log(calPercent);
     return (

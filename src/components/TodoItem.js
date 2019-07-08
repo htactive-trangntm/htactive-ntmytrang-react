@@ -15,7 +15,10 @@ class TodoItem extends Component {
 
   onClickDelete = () => {
     console.log(this.props.id);
-    this.props.deleteTask(this.props.id);
+    let result = window.confirm("Do you want to delete this task? Think carefully before do it.");
+    if (result) {
+      this.props.deleteTask(this.props.id);
+    } 
   };
 
   saveUpdateTask = () => {
@@ -44,7 +47,7 @@ class TodoItem extends Component {
   render() {
     const {id, task, isComplete} = this.props.task;
     return (
-      <li className="list-group-item checkbox ">
+      <li className="list-group-item checkbox " key = {id} >
         <div className="row">
           <div className="col-md-1 col-xs-1 col-lg-1 col-sm-1 checkbox">
             <label>
