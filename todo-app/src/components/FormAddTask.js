@@ -1,24 +1,23 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class FormAddTask extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value:'',
-      acticeInput: false
+      value: ""
     };
   }
 
   onClickAddTask = event => {
     event.preventDefault();
-    console.log(`key là ${this.props.key}`)
     let newTask = this.state.value;
-    this.props.addTask(newTask);
-    event.target.value = "";
-    this.setState({
-      acticeInput: !this.state.acticeInput
-    })
-    this.refs.form.reset();
+    if (newTask === "") {
+      window.confirm("Please enter the task that you want to add");
+    } else {
+      this.props.addTask(newTask);
+      this.refs.form.reset();
+    }
   };
 
   handleChange = event => {
@@ -26,7 +25,6 @@ class FormAddTask extends Component {
       value: event.target.value
     });
   };
-
 
   changeFilter = filter => {
     this.props.changeFilter(filter);
@@ -87,13 +85,6 @@ class FormAddTask extends Component {
             Active Task
           </button>
           &nbsp;
-          <button
-            className="btn btn-secondary"
-            onClick={() => this.changeFilter("active")}
-          >
-            Show All Completed Tasks
-          </button>
-          &nbsp;
           <div className="progress">
             <div
               className="progress-bar progress-bar-striped bg-success"
@@ -112,5 +103,9 @@ class FormAddTask extends Component {
     );
   }
 }
+
+FormAddTask.protoType = {
+  addTask: PropTypes.func.isRequired
+};
 
 export default FormAddTask;

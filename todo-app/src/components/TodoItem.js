@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 class TodoItem extends Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class TodoItem extends Component {
 
   onClickDelete = () => {
     console.log(this.props.id);
-    let result = window.confirm("Do you want to delete this task? Think carefully before do it.");
+    let result = window.confirm(
+      "Do you want to delete this task? Think carefully before do it."
+    );
     if (result) {
       this.props.deleteTask(this.props.id);
     }
@@ -33,9 +36,9 @@ class TodoItem extends Component {
   };
 
   onClickUpdate = () => {
-    this.setState({
-      active: !this.state.active
-    });
+    this.setState(prevState => ({
+      active: !prevState.active
+    }));
   };
 
   handleChange = event => {
@@ -47,7 +50,7 @@ class TodoItem extends Component {
   render() {
     const { id, task, isComplete } = this.props.task;
     return (
-      <li className="list-group-item checkbox " key={id} >
+      <li className="list-group-item checkbox " key={id}>
         <div className="row">
           <div className="col-md-1 col-xs-1 col-lg-1 col-sm-1 checkbox">
             <label>
@@ -55,7 +58,7 @@ class TodoItem extends Component {
                 id="toggleTaskStatus"
                 type="checkbox"
                 defaultChecked={isComplete}
-                onClick={() => this.onClickDone()}
+                onClick={this.onClickDone}
               />
             </label>
           </div>
@@ -68,8 +71,8 @@ class TodoItem extends Component {
               id={id}
               className={`${isComplete ? "completed" : ""} 
                             ${
-                this.state.active ? "enableInput" : "disableInput"
-                }`}
+                              this.state.active ? "enableInput" : "disableInput"
+                            }`}
             />
           </div>
           <div className="button-group col-md-10 col-xs-10 col-lg-10 col-sm-10">
@@ -82,18 +85,18 @@ class TodoItem extends Component {
                 <i className="fa fa-floppy-o" />
               </button>
             ) : (
-                <button
-                  type="button"
-                  className="btn btn-success"
-                  onClick={this.onClickUpdate}
-                >
-                  <i className="fa fa-pencil" />
-                </button>
-              )}
+              <button
+                type="button"
+                className="btn btn-success"
+                onClick={this.onClickUpdate}
+              >
+                <i className="fa fa-pencil" />
+              </button>
+            )}
             &nbsp;
             <button
               type="button"
-              onClick={() => this.onClickDelete()}
+              onClick={this.onClickDelete}
               className="btn btn-danger"
             >
               <i className="fa fa-trash-o" />
@@ -105,4 +108,9 @@ class TodoItem extends Component {
   }
 }
 
+TodoItem.propTypes  = {
+  task: PropTypes.object,
+}
+
 export default TodoItem;
+

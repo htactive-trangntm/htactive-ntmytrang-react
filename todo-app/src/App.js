@@ -19,10 +19,21 @@ class App extends Component {
       .then(res => res.json())
       .then(result => {
         this.setState({
-          todolists: result
+          todolists: result.reverse()
         });
       });
   }
+
+  makeid = length => {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
 
   //filter completed task
 
@@ -47,12 +58,14 @@ class App extends Component {
 
   //add task and save data on API
   addTask = async newTask => {
+    let taskAdded = {
+      id: this.makeid(5),
+      task: newTask,
+      isComplete: false
+    };
+    let task = [taskAdded, ...this.state.todolists];
     this.setState({
-      todolists: this.state.todolists.concat({
-        id: this.state.todolists.length + 1,
-        task: newTask,
-        isComplete: false
-      })
+      todolists: task
     });
 
     await fetch(url, {
@@ -134,9 +147,7 @@ class App extends Component {
         (completedTask.length / this.state.todolists.length) * 100
       );
     }
-    calPercent = 0;
-
-    console.log(calPercent);
+    console.log(completedTask);
     return (
       <>
         <FormAddTask
