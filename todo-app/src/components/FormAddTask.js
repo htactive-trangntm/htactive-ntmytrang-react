@@ -105,7 +105,8 @@ class FormAddTask extends Component {
 }
 
 FormAddTask.protoType = {
-  addTask: PropTypes.func.isRequired
+  addTask: PropTypes.func.isRequired,
+  calPercent: PropTypes.number
 };
 
 export default FormAddTask;
