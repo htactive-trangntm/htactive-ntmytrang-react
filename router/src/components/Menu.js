@@ -10,7 +10,10 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
         var active = match ? "active" : "";
         return (
           <li className={`{nav-item ${active}`}>
-            <Link to={to} className="nav-link"> {label}  </Link>
+            <Link to={to} className="nav-link">
+              {" "}
+              {label}{" "}
+            </Link>
           </li>
         );
       }}
@@ -32,11 +35,6 @@ const menus = [
   {
     name: "Contact",
     to: "/contact",
-    active: "false"
-  },
-  {
-    name: "Products",
-    to: "/products",
     active: "false"
   }
 ];
@@ -67,15 +65,14 @@ class Menu extends Component {
   showMenu = menus => {
     var result = null;
     result = menus.map((menu, index) => {
-        return(
-            <MenuLink
-            key={index}
-            label={menu.name}
-            to={menu.to}
-            activeOnlyWhenExact={menu.activeOnlyWhenExact}
-          />
-        )
-     
+      return (
+        <MenuLink
+          key={index}
+          label={menu.name}
+          to={menu.to}
+          activeOnlyWhenExact={menu.activeOnlyWhenExact}
+        />
+      );
     });
     return result;
   };

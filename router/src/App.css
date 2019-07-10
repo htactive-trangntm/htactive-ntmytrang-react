@@ -31,24 +31,30 @@
     transform: rotate(360deg);
   }
 }
-.column{
+.column {
   width: 20%;
   float: left;
+  margin-bottom: 45px;
 }
 
 .product {
-margin-left: 56px;
-margin-top: 117px;
+  margin-left: 56px;
+  margin-top: 48px;
 }
 
 .imgProduct {
-width: 286px;
-height: 250px;
+  width: 286px;
+  height: 250px;
 }
-.row{
+.product {
   overflow: hidden;
   width: 100%;
+  margin-left: 40px;
 }
-.row{
+/* .row{
   margin-left: 196px;
+} */
+.container-fluid {
+  margin-left: 78px;
+  margin-top: 20px;
 }

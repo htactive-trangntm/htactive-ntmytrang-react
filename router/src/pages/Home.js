@@ -1,11 +1,17 @@
 import React from "react";
+import Product from "../components/Product";
+import Menu from "../components/Menu";
 
-function Home() {
+class Home extends React.Component {
+  render() {
+    const { ...products } = this.props.products;
     return (
-      <div>
-        <h2>I will update home page later</h2>
-      </div>
+      <>
+        <Menu />
+        <Product products={products} />
+      </>
     );
   }
+}
 
-  export default Home
+export default Home;
